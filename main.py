@@ -10,6 +10,16 @@ MAGIC_SIGNATURES = {
     "gif": b"\x47\x49\x46\x38",  # GIF signature (4 bytes)
 }
 
+ascii_art = """
+__  __             _         ___  _      __                     _             
+|  \/  | __ _  __ _(_) ___   / _ \| |__  / _|_   _ ___  ___ __ _| |_ ___  _ __ 
+| |\/| |/ _` |/ _` | |/ __| | | | | '_ \| |_| | | / __|/ __/ _` | __/ _ \| '__|
+| |  | | (_| | (_| | | (__  | |_| | |_) |  _| |_| \__ \ (_| (_| | || (_) | |   
+|_|  |_|\__,_|\__, |_|\___|  \___/|_.__/|_|  \__,_|___/\___\__,_|\__\___/|_|   
+              |___/                                                            
+Author: Zhi Yang
+              """
+
 def change_magic_signature(file_path, target_signature, output_file_path):
     # Check if the file exists
     if not os.path.isfile(file_path):
@@ -34,6 +44,7 @@ def change_magic_signature(file_path, target_signature, output_file_path):
     print(f"Magic signature changed successfully to {target_signature}.")
 
 if __name__ == "__main__":
+    print(ascii_art)
     # Check if the correct number of arguments is passed
     if len(sys.argv) != 4:
         print("Usage: python script.py <file_path> <target_signature> <output_file_path>")
