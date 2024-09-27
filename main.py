@@ -3,9 +3,10 @@ import sys
 
 # Dictionary of magic signatures with their respective byte lengths
 MAGIC_SIGNATURES = {
-    "exe": b"\x4D\x5A",          # EXE signature (2 bytes)
+    "exe": b"\x4D\x5A\x90\x00\x03\x00\x00\x00\x04\x00\x00\x00\xFF\xFF\x00\x00\xB8\x00\x00\x00\x00\x00\x00\x00\x40\x00\x00\x00\x00\x00\x00\x00",          # EXE signature (16 bytes)
+    "php": b"\x3C\x3F\x70\x68\x70",  # PHP signature (5 bytes)
     "jpg": b"\xFF\xD8\xFF\xE0",  # JPEG signature (4 bytes)
-    "png": b"\x89\x50\x4E\x47",  # PNG signature (4 bytes)
+    "png": b"\x89\x50\x4E\x47\x0D\x0A\x1A\x0A\x00\x00\x00\x0d\x49\x48\x44\x52\x00\x00\x00\x01\x00\x00\x00\x01\x08\x02\x00\x00\x00\x9A\x99\x9A\x00\x00\x00\x00\x00\x00\x00\x00",  # PNG signature (40 bytes)
     "gif": b"\x47\x49\x46\x38",  # GIF signature (4 bytes)
 }
 
@@ -47,7 +48,7 @@ if __name__ == "__main__":
     # Check if the correct number of arguments is passed
     if len(sys.argv) != 4:
         print("Usage: python script.py <file_path> <target_signature> <output_file_path>")
-        print("Available signatures: exe, jpg, png, gif")
+        print("Available signatures: exe, php, jpg, png, gif")
         sys.exit(1)
 
     # Get the file path and the target signature from the arguments
@@ -58,7 +59,7 @@ if __name__ == "__main__":
     # Check if the target signature is supported
     if target_signature not in MAGIC_SIGNATURES:
         print(f"Error: Unsupported target signature '{target_signature}'.")
-        print("Available signatures: exe, jpg, png, gif")
+        print("Available signatures: exe, php, jpg, png, gif")
         sys.exit(1)
 
     # Change the magic signature
